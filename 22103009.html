@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback form</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap');
+      </style>
+    <style>
+        header::before{
+            background-image: url('1039991.jpg');
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            background-image: url("Untitled-3.png");
+            overflow: hidden;
+            width: 150%;
+            height: 200%;
+            transform-origin: top left;
+            transform: scale(67%);
+
+        }
+        .container img{
+            border-radius: 200px;
+            justify-content: center;
+            margin: 43px 227px;
+            padding: 15px 12px;
+            width: 400px;
+            height: 400px;
+        }
+        .container p{
+            margin: -51px -5px;
+            padding: 0px auto;
+            right: 100px;
+            width: 100%;
+            left: 100px;
+            text-align: center;
+            font-size: 42px;
+            font-family: 'Bruno Ace SC', cursive;
+            color: aliceblue;
+            
+        }
+        .container input{
+            margin: 84px 150px;
+            padding: 2px 2px;
+            height: 253px;
+            width: 656px;
+            border-radius: 41px;
+            text-align: center;
+            font-size: 23px;
+        }
+        .submit button:hover{
+            color: aliceblue;
+            background-color: black;
+        }
+         .submit button{
+            padding: 2px 2px;
+            height: 59px;
+            width: 435px;
+            margin: 2px 255px;
+            border-radius: 15px;
+            background-color: grey;
+        }
+    </style>
+</head>
+<body>
+    <header>
+
+        <div class="container">
+            <img src="allenjohn.png" alt="Error loading the image"><br>
+            <p>  Name - Allen Varughese John <br>
+                Roll number - 22103009 <br>
+                Work - Christ The Redeemer <br>
+            </p>
+            <form id="dlt">
+                <input type="text" placeholder="Write feedback here" id="name"><br>
+            </form>
+            <!-- <button>SUBMIT</button> -->
+        </div>    
+        <div class="submit">
+            <button id="sub"> submit</button>
+        </div>
+    </header>
+
+
+
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-app.js";
+        import { getDatabase, ref, set,child,update } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyDfm-H8Z6ZfCIrmEM9clQmGRO_C8dXxWiE",
+          authDomain: "my-project-7f4bc.firebaseapp.com",
+          databaseURL: "https://class-presentation-f725d-default-rtdb.firebaseio.com",
+          projectId: "my-project-7f4bc",
+          storageBucket: "my-project-7f4bc.appspot.com",
+          messagingSenderId: "727535022838",
+          appId: "1:727535022838:web:6714926c63437e3da2f2d7"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        
+        let submitBtn = document.querySelector('#sub');
+        
+    
+        submitBtn.addEventListener('click',e=>{
+    
+            let name = document.querySelector('#name').value;
+            
+            set(ref(db, "/Allen/"), 
+            {remarks: name}
+        );
+        window.alert("sucessfully submitted ! ");
+    document.getElementById("dlt").reset();
+            })
+    
+    
+    
+      </script>
+
+
+
+
+
+
+</body>
+</html>
